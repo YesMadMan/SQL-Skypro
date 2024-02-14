@@ -1,0 +1,31 @@
+Найдите общее количество индивидуально обучающихся студентов для каждого уровня.
+select level, count (*) from student
+where education_form = 'personal'
+group by level;
+
+
+
+Найдите общее количество учащихся школы с уровнем Advanced для каждой формы обучения.
+select education_form, count (*) from student
+where level = 'Advanced'
+group by education_form;
+
+
+
+Найдите общее количество учащихся школы в разрезе уровня и формы обучения, отсортированных по уровню в порядке возрастания и по форме обучения в порядке убывания.
+select level, education_form, count(*) from student
+group by level, education_form
+order by education_form ASC, level DESC;
+
+
+
+Найдите максимальное и минимальное id группы одним запросом.
+select min(group_id), max(group_id) from group_student;
+
+
+
+Найдите количество учеников и id группы, в которой наибольшее количество учеников.
+SELECT COUNT(user_id), group_id 
+FROM group_student gs 
+GROUP BY group_id 
+ORDER BY COUNT DESC LIMIT 1
